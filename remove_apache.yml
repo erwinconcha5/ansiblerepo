@@ -1,24 +1,19 @@
 ---
 
 - hosts: all
-  become: true
+  become: true 
   tasks:
 
-  - name: update repository index
-    dnf:
-      update_cache: yes
-
-  - name: install httpd package
-    dnf:
-      name: httpd
-      state: absent
-  - name: add php support for apache
-    dnf:
-      name:
-        - php
-        - php-cli
-        - php-mysqlnd
-        - php-gd
-      state: absent
-      
+    - name: update repository index
+      apt:
+        update_cache: yes
+         
+    - name: install apache2 package
+      apt:
+        name: apache2
+        state:  absent  
+    - name: add php support for apache
+      apt:
+        name: libapache2-mod-php  
+        state:  absent
 
