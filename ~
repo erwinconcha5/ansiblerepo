@@ -4,14 +4,14 @@
   become: true 
   pre_tasks:
 
-    - name: update repo cache (Rocky)
+    - name: install updates (Rocky)
       tags: always
       dnf:
         update_cache: yes
-      changed_when: false
+      change_when: false
       when: ansible_distribution == "Rocky"
 
-    - name: update repo cache (Ubuntu)
+    - name: install updates (Ubuntu)
       tags: always
       apt:
         update_cache: yes
